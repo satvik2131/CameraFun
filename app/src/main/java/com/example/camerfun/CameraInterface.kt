@@ -1,14 +1,18 @@
+
 package com.example.camerfun
 
-import android.annotation.SuppressLint
-import android.content.Context
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.hardware.Camera
-import android.media.MediaRecorder
+import android.media.*
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore.Files.FileColumns.MEDIA_TYPE_VIDEO
+import android.speech.RecognitionListener
+import android.speech.SpeechRecognizer
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -20,8 +24,7 @@ import androidx.core.net.toFile
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.io.OutputStream
-import java.net.URI
+import java.nio.ByteBuffer
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,7 +42,12 @@ class CameraInterface : AppCompatActivity() {
         // Create an instance of Camera
         mCamera = getCameraInstance();
         capture = findViewById(R.id.button_capture)
-        
+
+   
+//        Log.d("NO OF CAMERA ------>",
+//
+//        )
+
         mCamera?.setDisplayOrientation(90);
         mPreview = mCamera?.let {
             // Create our Preview view
@@ -87,11 +95,29 @@ class CameraInterface : AppCompatActivity() {
 
                 //Save the media with URI
                 var uri:Uri = getOutputMediaFileUri(MEDIA_TYPE_VIDEO);
-                var file:File = uri.toFile()
-                var op:FileOutputStream = FileOutputStream(file)
-                op.write(file.toString().toByteArray())
-                op.close()
+                //This is the file containing data
+                //  audio <----- FILE ---------> Video
 
+                var file:File = uri.toFile()
+                var audioIntent = Intent(this,CameraInterface::class.java)
+                audioIntent.putExtra("VIDEO",file.readBytes())
+
+                var recognizer = SpeechRecognizer.createSpeechRecognizer(this)
+
+//                var listener:RecognitionListener
+
+
+
+                recognizer.setRecognitionListener(null)
+                recognizer.startListening(audioIntent)
+
+
+//                Log.d("RUNNING------><--",extractor.trackCount.toString())
+
+                //                Saving Process
+//                var op:FileOutputStream = FileOutputStream(file)
+//                op.write(file.toString().toByteArray())
+//                op.close()
 
 
                 // inform the user that recording has stopped
