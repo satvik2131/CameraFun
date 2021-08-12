@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "370884278249",
+    "project_id": "transcamera-b1d4c",
+    "storage_bucket": "transcamera-b1d4c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:370884278249:android:0301ca3e9ae2e009967d78",
+        "android_client_info": {
+          "package_name": "com.example.camerfun"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "370884278249-6kr7do843js1rqp9n2kurrv1pkjudj3m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAnmsUDH8Tbeaktc2MMVAKw0Xb1egGJNxQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "370884278249-6kr7do843js1rqp9n2kurrv1pkjudj3m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
